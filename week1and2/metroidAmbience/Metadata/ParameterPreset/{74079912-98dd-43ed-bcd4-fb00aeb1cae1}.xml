@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{74079912-98dd-43ed-bcd4-fb00aeb1cae1}">
+		<property name="name">
+			<value>tambourVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e7bb0609-3239-44f6-9683-f9973f69b36b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f09d6284-eb09-4436-8e18-18f9ae712e70}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f09d6284-eb09-4436-8e18-18f9ae712e70}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.32999998331069946</value>
+		</property>
+	</object>
+</objects>

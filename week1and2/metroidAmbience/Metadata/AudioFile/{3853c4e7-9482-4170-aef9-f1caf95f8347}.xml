@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3853c4e7-9482-4170-aef9-f1caf95f8347}">
+		<property name="assetPath">
+			<value>trumpet.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>19.199999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{eb7b17e1-1dfa-4c0c-9acc-c1c1858d4d66}</destination>
+		</relationship>
+	</object>
+</objects>

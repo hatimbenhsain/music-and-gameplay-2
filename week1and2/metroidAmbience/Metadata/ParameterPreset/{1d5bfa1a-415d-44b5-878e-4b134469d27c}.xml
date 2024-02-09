@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{1d5bfa1a-415d-44b5-878e-4b134469d27c}">
+		<property name="name">
+			<value>strangeTechVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e7bb0609-3239-44f6-9683-f9973f69b36b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9fcb7004-5d77-4029-b9d6-be36145b1a61}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9fcb7004-5d77-4029-b9d6-be36145b1a61}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.29999998211860657</value>
+		</property>
+	</object>
+</objects>

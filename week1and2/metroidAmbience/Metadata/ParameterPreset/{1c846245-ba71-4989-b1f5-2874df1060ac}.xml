@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{1c846245-ba71-4989-b1f5-2874df1060ac}">
+		<property name="name">
+			<value>noise3Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e7bb0609-3239-44f6-9683-f9973f69b36b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c7dbf5ae-8212-4f6d-b7c0-9b5c84d0528c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c7dbf5ae-8212-4f6d-b7c0-9b5c84d0528c}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.29999998211860657</value>
+		</property>
+	</object>
+</objects>

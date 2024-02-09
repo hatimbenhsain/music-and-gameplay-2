@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{5363dd66-e0d2-4739-8c5f-c31f2909a768}">
+		<property name="name">
+			<value>waterVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e7bb0609-3239-44f6-9683-f9973f69b36b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ad96bf68-21f1-4f35-99af-e19f927dc427}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ad96bf68-21f1-4f35-99af-e19f927dc427}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.29999998211860657</value>
+		</property>
+	</object>
+</objects>

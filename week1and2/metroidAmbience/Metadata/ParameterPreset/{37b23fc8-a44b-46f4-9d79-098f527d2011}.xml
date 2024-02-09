@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{37b23fc8-a44b-46f4-9d79-098f527d2011}">
+		<property name="name">
+			<value>hihatVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e7bb0609-3239-44f6-9683-f9973f69b36b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{0d215470-563b-42e0-962f-30b4c9d5a661}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{0d215470-563b-42e0-962f-30b4c9d5a661}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.32999998331069946</value>
+		</property>
+	</object>
+</objects>
