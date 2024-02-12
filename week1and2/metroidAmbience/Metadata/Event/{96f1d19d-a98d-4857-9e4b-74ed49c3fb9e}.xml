@@ -45,6 +45,7 @@
 		</relationship>
 		<relationship name="banks">
 			<destination>{5cc574a1-102d-4383-8dea-a42c338d782d}</destination>
+			<destination>{2f3df2e5-64bc-409f-ba59-52f25429aa45}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b80ab43d-ef83-47ed-94fe-a44edcc8ccf1}">
@@ -1488,7 +1489,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{88997ae9-fd49-441b-9b6c-aaaced1d2093}" />
 	<object class="MixerBusFader" id="{22227bf2-0194-48cb-abc6-30150cb9c66b}" />
-	<object class="SpatialiserEffect" id="{6ceb515c-3b47-4a6c-a49f-b45e2ae1a83e}" />
+	<object class="SpatialiserEffect" id="{6ceb515c-3b47-4a6c-a49f-b45e2ae1a83e}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="SFXReverbEffect" id="{5e971b7e-fa07-45a8-aa22-a79d2733f7f5}">
 		<property name="earlyDelay">
 			<value>7</value>
