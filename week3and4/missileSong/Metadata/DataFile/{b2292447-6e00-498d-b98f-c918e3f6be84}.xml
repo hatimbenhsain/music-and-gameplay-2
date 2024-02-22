@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{b2292447-6e00-498d-b98f-c918e3f6be84}">
+		<property name="assetPath">
+			<value>reverseCymbal.oga</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d3e12a0-3c00-4887-9c85-7e27ce7d4107}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{ad384e93-a8d0-4930-bc34-898ee66f4732}">
+		<property name="assetPath">
+			<value>loop3base.oga</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d3e12a0-3c00-4887-9c85-7e27ce7d4107}</destination>
+		</relationship>
+	</object>
+</objects>
