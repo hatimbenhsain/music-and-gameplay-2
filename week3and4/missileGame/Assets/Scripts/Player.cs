@@ -16,11 +16,14 @@ public class Player : MonoBehaviour
     
     private CameraScript cameraScript;
 
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         body=GetComponentInChildren<Rigidbody>();
         cameraScript=FindObjectOfType<CameraScript>();
+        audioManager=FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -29,11 +32,13 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             on=true;
             particleSystem.gameObject.SetActive(true);
+            audioManager.SetSynth(1f);
         }
 
         if(Input.GetKeyUp(KeyCode.Space)){
             on=false;
             particleSystem.gameObject.SetActive(false);
+            audioManager.SetSynth(0f);
         }
 
         if(on){
@@ -80,5 +85,18 @@ public class Player : MonoBehaviour
         //transform.rotation=Quaternion.Euler(Vector3.RotateTowards(
         //        transform.forward,Vector3.right,rotateSpeed*Time.deltaTime,0f));
 
+        if(transform.position.y>8 && audioManager.GetTargetLoop()!=3){
+            audioManager.SetLoop(3);
+        }
+
     }
+
+    void OnCollisionEnter(Collision col){
+        if(col.gameObject.tag=="Ground"){
+            if(audioManager.GetTargetLoop()!=1){
+                audioManager.SetLoop(1);
+            }
+        }
+    }
+
 }
