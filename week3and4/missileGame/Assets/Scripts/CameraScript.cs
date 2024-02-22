@@ -9,7 +9,15 @@ public class CameraScript : MonoBehaviour
     public float positionSmoothing=1f;
     public float rotationSmoothing=1f;
 
+    public bool smoothPosition=false;
+    public bool rotateCamera=false;
+
+    public bool freezeZRotation=true;
+
     private Vector3 velocity = Vector3.zero;
+
+
+
     void Start()
     {
         
@@ -20,8 +28,17 @@ public class CameraScript : MonoBehaviour
     {
         //Vector3 rot=transform.rotation.eulerAngles;
         //transform.rotation=Quaternion.Euler(rot.x,rot.y,0f);
-        transform.position=Vector3.SmoothDamp(transform.position,target.position,ref velocity,positionSmoothing);
-        Vector3 rot=target.rotation.eulerAngles;
-        transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(rot.x,rot.y,0f),rotationSmoothing*Time.deltaTime);
+        if(smoothPosition){
+            transform.position=Vector3.SmoothDamp(transform.position,target.position,ref velocity,positionSmoothing);
+        }else{
+            transform.position=target.position;
+        }
+        if(rotateCamera){
+            Vector3 rot=target.rotation.eulerAngles;
+            if(freezeZRotation){
+                rot.z=0f;
+            }
+            transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(rot.x,rot.y,rot.z),rotationSmoothing*Time.deltaTime);
+        }
     }
 }

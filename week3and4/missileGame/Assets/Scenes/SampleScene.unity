@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0039957035, g: 0.00021792635, b: 0.000000051515347, a: 1}
+  m_IndirectSpecularColor: {r: 0.003995701, g: 0.00021792622, b: 0.000000051515347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75b4c568b742f8c4292cc62425752946, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75b4c568b742f8c4292cc62425752946, type: 3}
       propertyPath: m_LocalRotation.w
@@ -823,6 +823,9 @@ MonoBehaviour:
   target: {fileID: 1007433389}
   positionSmoothing: 0.05
   rotationSmoothing: 10
+  smoothPosition: 0
+  rotateCamera: 1
+  freezeZRotation: 1
 --- !u!4 &532783798
 Transform:
   m_ObjectHideFlags: 0
@@ -1526,6 +1529,9 @@ MonoBehaviour:
   target: {fileID: 0}
   positionSmoothing: 1
   rotationSmoothing: 1
+  smoothPosition: 0
+  rotateCamera: 0
+  freezeZRotation: 1
 --- !u!1 &1007433386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5e5e5ed35ec6c458e95ba9607add6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSystem: {fileID: 1594903913}
+  jetForce: 25
+  rotateSpeed: 100
 --- !u!4 &1007433389
 Transform:
   m_ObjectHideFlags: 0
@@ -1582,8 +1591,8 @@ Rigidbody:
   m_GameObject: {fileID: 1007433386}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.5
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
