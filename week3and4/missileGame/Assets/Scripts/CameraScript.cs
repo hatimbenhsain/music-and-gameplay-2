@@ -6,6 +6,10 @@ public class CameraScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;
+    public float positionSmoothing=1f;
+    public float rotationSmoothing=1f;
+
+    private Vector3 velocity = Vector3.zero;
     void Start()
     {
         
@@ -16,8 +20,8 @@ public class CameraScript : MonoBehaviour
     {
         //Vector3 rot=transform.rotation.eulerAngles;
         //transform.rotation=Quaternion.Euler(rot.x,rot.y,0f);
-        transform.position=target.position;
+        transform.position=Vector3.SmoothDamp(transform.position,target.position,ref velocity,positionSmoothing);
         Vector3 rot=target.rotation.eulerAngles;
-        transform.rotation=Quaternion.Euler(rot.x,rot.y,0f);
+        transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(rot.x,rot.y,0f),rotationSmoothing*Time.deltaTime);
     }
 }
