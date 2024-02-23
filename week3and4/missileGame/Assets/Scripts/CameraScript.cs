@@ -16,11 +16,18 @@ public class CameraScript : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
+    private Player player;
 
+    private Vector3 offset;
+
+    public float cameraShakeIntensity=5f;
+    public float cameraShakeMinVel=20f;
+    public float cameraShakeMaxVel=100f;
 
     void Start()
     {
-        
+        player=FindObjectOfType<Player>();
+        offset=Vector3.zero;
     }
 
     // Update is called once per frame
@@ -28,6 +35,8 @@ public class CameraScript : MonoBehaviour
     {
         //Vector3 rot=transform.rotation.eulerAngles;
         //transform.rotation=Quaternion.Euler(rot.x,rot.y,0f);
+        transform.position=transform.position-offset;
+
         if(smoothPosition){
             transform.position=Vector3.SmoothDamp(transform.position,target.position,ref velocity,positionSmoothing);
         }else{
@@ -39,6 +48,13 @@ public class CameraScript : MonoBehaviour
                 rot.z=0f;
             }
             transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(rot.x,rot.y,rot.z),rotationSmoothing*Time.deltaTime);
+        }
+
+        if(player.body.velocity.magnitude>20f){
+            float intensity=cameraShakeIntensity*
+            Mathf.Min(player.body.velocity.magnitude-cameraShakeMinVel,cameraShakeMaxVel-cameraShakeMinVel)/(cameraShakeMaxVel-cameraShakeMinVel);
+            offset=new Vector3(Random.Range(-1f,1f)*intensity,Random.Range(-1f,1f)*intensity,Random.Range(-1f,1f)*intensity);
+            transform.position=transform.position+offset;
         }
     }
 }

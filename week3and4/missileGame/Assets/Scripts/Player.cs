@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Player : MonoBehaviour
 {
     private bool on=false;
     public ParticleSystem particleSystem;
 
-    private Rigidbody body;
+    public Rigidbody body;
 
     public float jetForce=1f;
 
@@ -18,12 +19,20 @@ public class Player : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public PostProcessVolume ppVolume;
+    private LensDistortion lensDistortion;
+
+    public float distortionMultiplier=1.5f;
+
+    public SpriteRenderer motionLines;
+
     // Start is called before the first frame update
     void Start()
     {
         body=GetComponentInChildren<Rigidbody>();
         cameraScript=FindObjectOfType<CameraScript>();
         audioManager=FindObjectOfType<AudioManager>();
+        ppVolume.profile.TryGetSettings<LensDistortion>(out lensDistortion);
     }
 
     // Update is called once per frame
@@ -44,6 +53,12 @@ public class Player : MonoBehaviour
         if(on){
             body.AddForce(jetForce*Time.deltaTime*transform.forward,ForceMode.Impulse);
         }
+
+        lensDistortion.intensity.value=-body.velocity.magnitude*1.5f;
+
+        Color c=Color.white;
+        c.a=(body.velocity.magnitude-20f)*10f;
+        motionLines.color=c;
 
         //Vector3 d=Vector3.zero;
         
