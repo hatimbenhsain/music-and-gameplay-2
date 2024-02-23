@@ -65,6 +65,10 @@ public class AudioManager : MonoBehaviour
         instance.setParameterByName("playingSynth",Mathf.Clamp(n,0f,1f));
     }
 
+    public void Stop(){
+        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
 // //code from https://qa.fmod.com/t/sync-game-events-to-music-beats/12111/2
 //     public RESULT StudioEventCallback(EVENT_CALLBACK_TYPE type, IntPtr eventInstance, IntPtr parameters)
 //     {

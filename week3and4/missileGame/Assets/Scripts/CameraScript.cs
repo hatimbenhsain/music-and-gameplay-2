@@ -35,26 +35,30 @@ public class CameraScript : MonoBehaviour
     {
         //Vector3 rot=transform.rotation.eulerAngles;
         //transform.rotation=Quaternion.Euler(rot.x,rot.y,0f);
-        transform.position=transform.position-offset;
+        if(!player.exploded){
+            transform.position=transform.position-offset;
 
-        if(smoothPosition){
-            transform.position=Vector3.SmoothDamp(transform.position,target.position,ref velocity,positionSmoothing);
-        }else{
-            transform.position=target.position;
-        }
-        if(rotateCamera){
-            Vector3 rot=target.rotation.eulerAngles;
-            if(freezeZRotation){
-                rot.z=0f;
+            if(smoothPosition){
+                transform.position=Vector3.SmoothDamp(transform.position,target.position,ref velocity,positionSmoothing);
+            }else{
+                transform.position=target.position;
             }
-            transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(rot.x,rot.y,rot.z),rotationSmoothing*Time.deltaTime);
-        }
+            if(rotateCamera){
+                Vector3 rot=target.rotation.eulerAngles;
+                if(freezeZRotation){
+                    rot.z=0f;
+                }
+                transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(rot.x,rot.y,rot.z),rotationSmoothing*Time.deltaTime);
+            }
 
-        if(player.body.velocity.magnitude>20f){
-            float intensity=cameraShakeIntensity*
-            Mathf.Min(player.body.velocity.magnitude-cameraShakeMinVel,cameraShakeMaxVel-cameraShakeMinVel)/(cameraShakeMaxVel-cameraShakeMinVel);
-            offset=new Vector3(Random.Range(-1f,1f)*intensity,Random.Range(-1f,1f)*intensity,Random.Range(-1f,1f)*intensity);
-            transform.position=transform.position+offset;
+            if(player.body.velocity.magnitude>20f){
+                float intensity=cameraShakeIntensity*
+                Mathf.Min(player.body.velocity.magnitude-cameraShakeMinVel,cameraShakeMaxVel-cameraShakeMinVel)/(cameraShakeMaxVel-cameraShakeMinVel);
+                offset=new Vector3(Random.Range(-1f,1f)*intensity,Random.Range(-1f,1f)*intensity,Random.Range(-1f,1f)*intensity);
+                transform.position=transform.position+offset;
+            }
+        }else{
+            transform.rotation=Quaternion.EulerRotation(Vector3.zero);
         }
     }
 }

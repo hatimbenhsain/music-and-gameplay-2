@@ -21,11 +21,13 @@ public class Water : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag=="Player"){
             audioManager.SetLoop(2);
+            other.gameObject.GetComponentInParent<Player>().InWater(true);
         }
     }
     void OnTriggerExit(Collider other){
         if(other.gameObject.tag=="Player"){
             audioManager.SetLoop(3);
+            other.gameObject.GetComponentInParent<Player>().InWater(false);
         }
     }
 }
