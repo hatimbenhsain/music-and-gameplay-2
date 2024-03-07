@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{9b8433b3-2e4e-4c8f-9a72-c262a9cd3104}">
+		<property name="name">
+			<value>DrumVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{541929d9-bd9d-4c40-b14b-69133798be3b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{541929d9-bd9d-4c40-b14b-69133798be3b}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.22999998927116394</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

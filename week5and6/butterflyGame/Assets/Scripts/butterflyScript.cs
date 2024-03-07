@@ -33,9 +33,23 @@ public class ButterflyScript : MonoBehaviour
 
     private string[] chords={"Chord 1","Chord 2","Chord 3","Chord 4"};
 
+    private string[][] instrumentParameters;
+
+    
+    private float[] tornadoTresholds={1f,10f,100f,1000f};
+
+    private float drumVolumeTreshold=10f;
+    private float drumMinimumPeriod=0.6f;
+
     private List<MidiEvent> notes;
     private List<Coroutine> coroutines;
     private int ticksPerQuarterNote;
+
+    private int prevTreshold;
+    private string currentParameter;
+    private string nextParameter;
+
+    private bool firstChord=false;
 
     void Awake()
     {
@@ -50,6 +64,21 @@ public class ButterflyScript : MonoBehaviour
 
         ParseMidi();
         coroutines=new List<Coroutine>();
+
+        instrumentParameters=new string[tornadoTresholds.Length+1][];
+        string[] t1={"Harp","Mark"};
+        string[] t2={"Strings","Brass"};
+        string[] t3={"Choir"};
+        string[] t4={"Choir","Timpani"};
+        instrumentParameters[0]=new string[0];
+        instrumentParameters[1]=t1;
+        instrumentParameters[2]=t2;
+        instrumentParameters[3]=t3;
+        instrumentParameters[4]=t4;
+
+        prevTreshold=0;
+        currentParameter="";
+        nextParameter="";
     }
 
     // Update is called once per frame
@@ -91,36 +120,100 @@ public class ButterflyScript : MonoBehaviour
         wingFlapInstance.start();
         wingFlapInstance.release(); 
         int maxFlap=2; //number of flaps before next chord play
-        if(flapCount%maxFlap==0){
+
+        if(tornadoScript.period>2f && flapCount%maxFlap==1 && tornadoScript.currentRadius>tornadoTresholds[0]){
+            flapCount++;
+        }
+
+        if(flapCount%maxFlap==0 && tornadoScript.currentRadius>tornadoTresholds[0]){
+            if(!firstChord){
+                flapCount=0;
+                firstChord=true;
+            }
             prevChord=currentChord;
             prevChord.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentChord=FMODUnity.RuntimeManager.CreateInstance("event:/"+chords[(int)Mathf.Floor(flapCount/maxFlap)%chords.Length]);
             currentChord.start();
-            currentChord.release();
-        }
-        flapCount++;
-
-        foreach(Coroutine c in coroutines){
-            StopCoroutine(c);
-        }
-        coroutines=new List<Coroutine>();
-
-        foreach(MidiEvent m in notes){
-            float time=m.Time*60000/((60*2/tornadoScript.period)*ticksPerQuarterNote);
-            var note = m.Note;
-            var velocity = m.Velocity;
-            string eventName="";
-            switch(note){
-                case 55:
-                    eventName="Drum 2";
-                    break;
-                case 60:
-                    eventName="Drum 1";
-                    break;
+            foreach(string[] s in instrumentParameters){
+                if(s.Length>0){
+                    foreach(string p in s){
+                        currentChord.setParameterByName(p,0f);
+                    }
+                }
             }
-            UnityEngine.Debug.Log(time);
+            int i=0;
+            foreach(float t in tornadoTresholds){
+                if(tornadoScript.currentRadius>t){
+                    i++;
+                }else{
+                    break;
+                }
+            }
+
+            int tempI=i;
             
-            coroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
+            if(prevTreshold!=i){
+                string[] sa=instrumentParameters[i];
+                nextParameter=sa[(int)Mathf.Floor(Random.Range(0f,sa.Length))];
+                i=prevTreshold;
+                UnityEngine.Debug.Log("change instrument");
+                if(prevTreshold==0){
+                    flapCount--;
+                }
+            }else{
+                currentParameter=nextParameter;
+            }
+
+            if(i>0){
+                currentChord.setParameterByName(currentParameter,1f);
+                if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-1]){
+                    currentChord.setParameterByName("Timpani",1f);
+                    currentChord.setParameterByName("Choir",1f);
+                }
+                currentChord.release();
+            }
+
+            prevTreshold=tempI;   
+
+        }else if(tornadoScript.currentRadius<=tornadoTresholds[0]){
+            prevTreshold=0;
+        }
+
+        if(tornadoScript.currentRadius>tornadoTresholds[0]){
+            flapCount++;
+        }
+
+        
+        if(tornadoScript.period>=drumMinimumPeriod){
+            foreach(Coroutine c in coroutines){
+                StopCoroutine(c);
+            }
+            coroutines=new List<Coroutine>();
+
+            foreach(MidiEvent m in notes){
+                float time=m.Time*60000/((60*2/tornadoScript.period)*ticksPerQuarterNote);
+                var note = m.Note;
+                var velocity = m.Velocity;
+                string eventName="";
+                switch(note){
+                    case 55:
+                        eventName="Drum 2";
+                        break;
+                    case 60:
+                        eventName="Drum 1";
+                        break;
+                }
+                
+                coroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
+                
+                if(tornadoScript.currentRadius>drumVolumeTreshold){
+                    RuntimeManager.StudioSystem.setParameterByName("DrumVolume",1f);
+                }else{
+                    RuntimeManager.StudioSystem.setParameterByName("DrumVolume",0f);
+                }
+            }
+        }else{
+            RuntimeManager.StudioSystem.setParameterByName("DrumVolume",0f);
         }
     }
 
@@ -165,8 +258,6 @@ public class ButterflyScript : MonoBehaviour
     	EventInstance instance = FMODUnity.RuntimeManager.CreateInstance("event:/"+eventName);
         instance.start();
         instance.release(); 
-        UnityEngine.Debug.Log(eventName);
-        UnityEngine.Debug.Log(t);
         
 	}
 

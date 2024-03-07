@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{45eb02a6-13ae-40f0-883f-c401ec382c4e}">
+		<property name="assetPath">
+			<value>celesta.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>243</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a8624e60-ed0a-4524-a29b-4a0cddf166e9}</destination>
+		</relationship>
+	</object>
+</objects>

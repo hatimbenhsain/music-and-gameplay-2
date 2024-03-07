@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{9f157734-f177-457b-8221-4a537b880a17}">
+		<property name="name">
+			<value>MalletVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a61bea21-5eaa-432e-b76d-de526d42314b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a61bea21-5eaa-432e-b76d-de526d42314b}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

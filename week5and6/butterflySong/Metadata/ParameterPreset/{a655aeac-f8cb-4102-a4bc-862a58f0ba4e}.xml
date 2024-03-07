@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a655aeac-f8cb-4102-a4bc-862a58f0ba4e}">
+		<property name="name">
+			<value>Harp</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{0d9136f6-e33e-4815-8fe2-c765e470d4aa}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{0d9136f6-e33e-4815-8fe2-c765e470d4aa}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<relationship name="automators">
+			<destination>{f99fb934-d6b7-439d-a357-8e5977d6c5fe}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{f99fb934-d6b7-439d-a357-8e5977d6c5fe}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>cursorPosition</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{8dfae07d-6036-40d8-983d-0caa8ebbdbe7}">
+		<property name="name">
+			<value>Instruments</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{812b1c68-9c09-4c3c-bb01-bce307419276}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{812b1c68-9c09-4c3c-bb01-bce307419276}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>9</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Harp</value>
+			<value>Choir</value>
+			<value>Strings</value>
+			<value>Brass</value>
+			<value>Pad 1</value>
+			<value>Pad 2</value>
+			<value>Mark 2</value>
+			<value>Timpani</value>
+			<value>Choir and Timpani</value>
+		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
