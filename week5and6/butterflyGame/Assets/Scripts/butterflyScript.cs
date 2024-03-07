@@ -41,6 +41,8 @@ public class ButterflyScript : MonoBehaviour
     private float drumVolumeTreshold=10f;
     private float drumMinimumPeriod=0.6f;
 
+    private float celestaTreshold=0.4f;
+
     private List<MidiEvent> notes;
     private List<Coroutine> coroutines;
     private int ticksPerQuarterNote;
@@ -139,6 +141,7 @@ public class ButterflyScript : MonoBehaviour
                     foreach(string p in s){
                         currentChord.setParameterByName(p,0f);
                     }
+                    RuntimeManager.StudioSystem.setParameterByName("Celesta",0f);
                 }
             }
             int i=0;
@@ -165,10 +168,14 @@ public class ButterflyScript : MonoBehaviour
             }
 
             if(i>0){
-                currentChord.setParameterByName(currentParameter,1f);
-                if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-1]){
-                    currentChord.setParameterByName("Timpani",1f);
-                    currentChord.setParameterByName("Choir",1f);
+                if(tornadoScript.period<celestaTreshold){
+                    RuntimeManager.StudioSystem.setParameterByName("Celesta",1f);
+                }else{
+                    currentChord.setParameterByName(currentParameter,1f);
+                    if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-1]){
+                        currentChord.setParameterByName("Timpani",1f);
+                        currentChord.setParameterByName("Choir",1f);
+                    }
                 }
                 currentChord.release();
             }
