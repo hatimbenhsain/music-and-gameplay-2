@@ -12,8 +12,20 @@
 		</relationship>
 	</object>
 	<object class="GameParameter" id="{4f2242f0-c6ee-4cd2-93a1-dc333ef53099}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
 		<property name="initialValue">
 			<value>0</value>
+		</property>
+		<property name="seekSpeedDescending">
+			<value>0.2800000011920929</value>
+		</property>
+		<property name="seekSpeedAsymmetric">
+			<value>true</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
 		</property>
 	</object>
 </objects>
