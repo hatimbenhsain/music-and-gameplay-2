@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{f78be391-923b-4426-b147-cdf6345b2de7}">
+		<property name="name">
+			<value>MelodyVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{18f739ce-3c97-4d48-a924-5e7b46fec34d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{18f739ce-3c97-4d48-a924-5e7b46fec34d}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

@@ -31,9 +31,10 @@ public class ButterflyScript : MonoBehaviour
 
     private int flapCount;
 
-    private string[] chords={"Chord 1","Chord 2","Chord 3","Chord 4"};
+    private string[] chords={"Chord 1","Chord 2","Chord 3","Chord 4","Chord 5","Chord 6","Chord 7","Chord 8","Chord 9","Chord 10","Chord 11","Chord 12","Chord 13"
+    ,"Chord 14","Chord 15","Chord 16","Chord 17","Chord 18","Chord 19","Chord 20"};
 
-    private string[] drums={"Tabla","Conga","Bongo","Shaker","Stick"};
+    private string[] drums={"Tabla","Conga","Bongo",};   //"Shaker","Stick"
 
     private string currentDrum="";
     private string nextDrum="";
@@ -53,6 +54,10 @@ public class ButterflyScript : MonoBehaviour
 
     private List<MidiEvent> drumNotes;
     private List<MidiEvent> malletNotes;
+    private List<MidiEvent> melody1Notes;
+    private List<MidiEvent> melody2Notes;
+    private List<MidiEvent> melody3Notes;
+    private List<MidiEvent> melody4Notes;
     private List<Coroutine> drumCoroutines;
     private List<Coroutine> malletCoroutines;
     private int ticksPerQuarterNote;
@@ -63,6 +68,10 @@ public class ButterflyScript : MonoBehaviour
 
     private bool firstChord=false;
     private EventInstance prevInstance;
+
+    private bool playMelody=false;
+    private bool playMallet=false;
+    private bool playDrums=false;
 
     void Awake()
     {
@@ -198,6 +207,21 @@ public class ButterflyScript : MonoBehaviour
                     if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-1]){
                         currentChord.setParameterByName("Timpani",1f);
                         currentChord.setParameterByName("Choir",1f);
+                        playDrums=false;
+                        playMelody=false;
+                        playMallet=false;
+                    }else if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-2]){
+                        playDrums=true;
+                        playMelody=true;
+                        playMallet=false;
+                    }else if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-3]){
+                        playDrums=true;
+                        playMelody=false;
+                        playMallet=true;
+                    }else{
+                        playDrums=false;
+                        playMelody=false;
+                        playMallet=false;
                     }
                 }
                 currentChord.release();
@@ -213,8 +237,7 @@ public class ButterflyScript : MonoBehaviour
             flapCount++;
         }
 
-        
-        if(tornadoScript.period>=drumMinimumPeriod){
+        if(tornadoScript.period>=drumMinimumPeriod && playDrums){
             foreach(Coroutine c in drumCoroutines){
                 StopCoroutine(c);
             }
@@ -252,33 +275,70 @@ public class ButterflyScript : MonoBehaviour
             }
             malletCoroutines=new List<Coroutine>();
 
-            foreach(MidiEvent m in malletNotes){
-                float time=m.Time*60000/((60*2/tornadoScript.period)*ticksPerQuarterNote);
-                var note = m.Note;
-                var velocity = m.Velocity;
-                string eventName="";
-                switch(note){
-                    case 57:
-                        eventName="Mallet 1";
-                        break;
-                    case 62:
-                        eventName="Mallet 2";
-                        break;
-                    case 65:
-                        eventName="Mallet 3";
-                        break;
+            List<MidiEvent> notes=malletNotes;
+
+            if(playMelody){
+                if(flapCount%4==0){
+                    notes=melody1Notes;
+                }else if(flapCount%4==1){
+                    notes=melody2Notes;
+                }else if(flapCount%4==2){
+                    notes=melody3Notes;
+                }else if(flapCount%4==3){
+                    notes=melody4Notes;
                 }
-                
-                malletCoroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
-                
-                if(tornadoScript.currentRadius>malletVolumeTreshold){
-                    RuntimeManager.StudioSystem.setParameterByName("MalletVolume",1f);
-                }else{
-                    RuntimeManager.StudioSystem.setParameterByName("MalletVolume",0f);
+            }
+
+            if(playMallet || playMelody){
+                foreach(MidiEvent m in notes){
+                    float time=m.Time*60000/((60*2/tornadoScript.period)*ticksPerQuarterNote);
+                    var note = m.Note;
+                    var velocity = m.Velocity;
+                    string eventName="";
+                    switch(note){
+                        case 57:
+                            eventName="Mallet 1";
+                            break;
+                        case 62:
+                            eventName="Mallet 2";
+                            break;
+                        case 65:
+                            eventName="Mallet 3";
+                            break;
+                        case 72:
+                            eventName="Melody C1";
+                            break;
+                        case 75:
+                            eventName="Melody Eb";
+                            break;
+                        case 79:
+                            eventName="Melody G";
+                            break;
+                        case 81:
+                            eventName="Melody A";
+                            break;
+                        case 82:
+                            eventName="Melody Bb";
+                            break;
+                        case 84:
+                            eventName="Melody C2";
+                            break;
+                    }
+                    
+                    malletCoroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
+                    
+                    if(tornadoScript.currentRadius>malletVolumeTreshold){
+                        RuntimeManager.StudioSystem.setParameterByName("MalletVolume",1f);
+                        RuntimeManager.StudioSystem.setParameterByName("MelodyVolume",1f);
+                    }else{
+                        RuntimeManager.StudioSystem.setParameterByName("MalletVolume",0f);
+                        RuntimeManager.StudioSystem.setParameterByName("MelodyVolume",0f);
+                    }
                 }
             }
         }else{
             RuntimeManager.StudioSystem.setParameterByName("MalletVolume",0f);
+            RuntimeManager.StudioSystem.setParameterByName("MelodyVolume",0f);
         }
     }
 
@@ -336,7 +396,6 @@ public class ButterflyScript : MonoBehaviour
                     var note = midiEvent.Note;
                     var velocity = midiEvent.Velocity;
                     malletNotes.Add(midiEvent);
-                    UnityEngine.Debug.Log(note);
                 }
             }
 
@@ -348,6 +407,64 @@ public class ButterflyScript : MonoBehaviour
             }    
         }
         malletNotes.RemoveAt(malletNotes.Count/2);
+
+
+        melody1Notes=new List<MidiEvent>();
+        midiFile = new MidiFile("melody1.mid");
+        foreach(var track in midiFile.Tracks){
+            UnityEngine.Debug.Log(track);
+            foreach(var midiEvent in track.MidiEvents){
+                if(midiEvent.MidiEventType==MidiEventType.NoteOn){
+                    var channel = midiEvent.Channel;
+                    var note = midiEvent.Note;
+                    var velocity = midiEvent.Velocity;
+                    melody1Notes.Add(midiEvent);
+                    UnityEngine.Debug.Log(note);
+                }
+            }
+        }
+        melody2Notes=new List<MidiEvent>();
+        midiFile = new MidiFile("melody2.mid");
+        foreach(var track in midiFile.Tracks){
+            UnityEngine.Debug.Log(track);
+            foreach(var midiEvent in track.MidiEvents){
+                if(midiEvent.MidiEventType==MidiEventType.NoteOn){
+                    var channel = midiEvent.Channel;
+                    var note = midiEvent.Note;
+                    var velocity = midiEvent.Velocity;
+                    melody2Notes.Add(midiEvent);
+                    UnityEngine.Debug.Log(note);
+                }
+            }
+        }
+        melody3Notes=new List<MidiEvent>();
+        midiFile = new MidiFile("melody3.mid");
+        foreach(var track in midiFile.Tracks){
+            UnityEngine.Debug.Log(track);
+            foreach(var midiEvent in track.MidiEvents){
+                if(midiEvent.MidiEventType==MidiEventType.NoteOn){
+                    var channel = midiEvent.Channel;
+                    var note = midiEvent.Note;
+                    var velocity = midiEvent.Velocity;
+                    melody3Notes.Add(midiEvent);
+                    UnityEngine.Debug.Log(note);
+                }
+            }
+        }
+        melody4Notes=new List<MidiEvent>();
+        midiFile = new MidiFile("melody4.mid");
+        foreach(var track in midiFile.Tracks){
+            UnityEngine.Debug.Log(track);
+            foreach(var midiEvent in track.MidiEvents){
+                if(midiEvent.MidiEventType==MidiEventType.NoteOn){
+                    var channel = midiEvent.Channel;
+                    var note = midiEvent.Note;
+                    var velocity = midiEvent.Velocity;
+                    melody4Notes.Add(midiEvent);
+                    UnityEngine.Debug.Log(note);
+                }
+            }
+        }
     }
 
     IEnumerator CreateAction(float t, string eventName)

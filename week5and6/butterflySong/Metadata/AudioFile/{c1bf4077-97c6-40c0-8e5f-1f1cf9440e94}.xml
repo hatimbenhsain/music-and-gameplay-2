@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c1bf4077-97c6-40c0-8e5f-1f1cf9440e94}">
+		<property name="assetPath">
+			<value>melodyEb.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a8624e60-ed0a-4524-a29b-4a0cddf166e9}</destination>
+		</relationship>
+	</object>
+</objects>
