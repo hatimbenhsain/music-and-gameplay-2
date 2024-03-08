@@ -33,18 +33,28 @@ public class ButterflyScript : MonoBehaviour
 
     private string[] chords={"Chord 1","Chord 2","Chord 3","Chord 4"};
 
+    private string[] drums={"Tabla","Conga","Bongo","Shaker","Stick"};
+
+    private string currentDrum="";
+    private string nextDrum="";
+
     private string[][] instrumentParameters;
 
     
-    private float[] tornadoTresholds={1f,2f,5f,10f};
+    public float[] tornadoTresholds={1f,10f,100f,1000f};
 
-    private float drumVolumeTreshold=10f;
+    public float drumVolumeTreshold=10f;
+    public float malletVolumeTreshold=10f;
     private float drumMinimumPeriod=0.6f;
+
+    private float malletMinimumPeriod=0.6f;
 
     private float celestaTreshold=0.4f;
 
-    private List<MidiEvent> notes;
-    private List<Coroutine> coroutines;
+    private List<MidiEvent> drumNotes;
+    private List<MidiEvent> malletNotes;
+    private List<Coroutine> drumCoroutines;
+    private List<Coroutine> malletCoroutines;
     private int ticksPerQuarterNote;
 
     private int prevTreshold;
@@ -52,6 +62,7 @@ public class ButterflyScript : MonoBehaviour
     private string nextParameter;
 
     private bool firstChord=false;
+    private EventInstance prevInstance;
 
     void Awake()
     {
@@ -65,7 +76,8 @@ public class ButterflyScript : MonoBehaviour
         flapCount=0;
 
         ParseMidi();
-        coroutines=new List<Coroutine>();
+        drumCoroutines=new List<Coroutine>();
+        malletCoroutines=new List<Coroutine>();
 
         instrumentParameters=new string[tornadoTresholds.Length+1][];
         string[] t1={"Harp","Mark"};
@@ -139,7 +151,7 @@ public class ButterflyScript : MonoBehaviour
             foreach(string[] s in instrumentParameters){
                 if(s.Length>0){
                     foreach(string p in s){
-                        RuntimeManager.StudioSystem.setParameterByName(p,0f);
+                        currentChord.setParameterByName(p,0f);
                     }
                     RuntimeManager.StudioSystem.setParameterByName("Celesta",0f);
                 }
@@ -160,21 +172,32 @@ public class ButterflyScript : MonoBehaviour
                 nextParameter=sa[(int)Mathf.Floor(Random.Range(0f,sa.Length))];
                 i=prevTreshold;
                 UnityEngine.Debug.Log("change instrument");
+                string nd=drums[(int)Mathf.Floor(Random.Range(0f,drums.Length))];
+                while(nd==currentDrum){
+                    nd=drums[(int)Mathf.Floor(Random.Range(0f,drums.Length))];
+                }
+                nextDrum=nd;
                 if(prevTreshold==0){
                     flapCount--;
                 }
             }else{
                 currentParameter=nextParameter;
+                foreach(string d in drums){
+                    RuntimeManager.StudioSystem.setParameterByName(d,0f);
+                }
+                RuntimeManager.StudioSystem.setParameterByName(nextDrum,1f);
+                currentDrum=nextDrum;
             }
+            RuntimeManager.StudioSystem.setParameterByName("Kalimba",1f);
 
             if(i>0){
                 if(tornadoScript.period<celestaTreshold){
                     RuntimeManager.StudioSystem.setParameterByName("Celesta",1f);
                 }else{
-                    RuntimeManager.StudioSystem.setParameterByName(currentParameter,1f);
+                    currentChord.setParameterByName(currentParameter,1f);
                     if(tornadoScript.currentRadius>tornadoTresholds[tornadoTresholds.Length-1]){
-                        RuntimeManager.StudioSystem.setParameterByName("Timpani",1f);
-                        RuntimeManager.StudioSystem.setParameterByName("Choir",1f);
+                        currentChord.setParameterByName("Timpani",1f);
+                        currentChord.setParameterByName("Choir",1f);
                     }
                 }
                 currentChord.release();
@@ -192,12 +215,12 @@ public class ButterflyScript : MonoBehaviour
 
         
         if(tornadoScript.period>=drumMinimumPeriod){
-            foreach(Coroutine c in coroutines){
+            foreach(Coroutine c in drumCoroutines){
                 StopCoroutine(c);
             }
-            coroutines=new List<Coroutine>();
+            drumCoroutines=new List<Coroutine>();
 
-            foreach(MidiEvent m in notes){
+            foreach(MidiEvent m in drumNotes){
                 float time=m.Time*60000/((60*2/tornadoScript.period)*ticksPerQuarterNote);
                 var note = m.Note;
                 var velocity = m.Velocity;
@@ -211,7 +234,7 @@ public class ButterflyScript : MonoBehaviour
                         break;
                 }
                 
-                coroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
+                drumCoroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
                 
                 if(tornadoScript.currentRadius>drumVolumeTreshold){
                     RuntimeManager.StudioSystem.setParameterByName("DrumVolume",1f);
@@ -221,6 +244,41 @@ public class ButterflyScript : MonoBehaviour
             }
         }else{
             RuntimeManager.StudioSystem.setParameterByName("DrumVolume",0f);
+        }
+
+        if(tornadoScript.period>=malletMinimumPeriod){
+            foreach(Coroutine c in malletCoroutines){
+                StopCoroutine(c);
+            }
+            malletCoroutines=new List<Coroutine>();
+
+            foreach(MidiEvent m in malletNotes){
+                float time=m.Time*60000/((60*2/tornadoScript.period)*ticksPerQuarterNote);
+                var note = m.Note;
+                var velocity = m.Velocity;
+                string eventName="";
+                switch(note){
+                    case 57:
+                        eventName="Mallet 1";
+                        break;
+                    case 62:
+                        eventName="Mallet 2";
+                        break;
+                    case 65:
+                        eventName="Mallet 3";
+                        break;
+                }
+                
+                malletCoroutines.Add(StartCoroutine(CreateAction(time/1000,eventName)));
+                
+                if(tornadoScript.currentRadius>malletVolumeTreshold){
+                    RuntimeManager.StudioSystem.setParameterByName("MalletVolume",1f);
+                }else{
+                    RuntimeManager.StudioSystem.setParameterByName("MalletVolume",0f);
+                }
+            }
+        }else{
+            RuntimeManager.StudioSystem.setParameterByName("MalletVolume",0f);
         }
     }
 
@@ -236,7 +294,7 @@ public class ButterflyScript : MonoBehaviour
 
         int bpm=80;
 
-        notes=new List<MidiEvent>();
+        drumNotes=new List<MidiEvent>();
 
         foreach(var track in midiFile.Tracks){
             UnityEngine.Debug.Log(track);
@@ -245,7 +303,7 @@ public class ButterflyScript : MonoBehaviour
                     var channel = midiEvent.Channel;
                     var note = midiEvent.Note;
                     var velocity = midiEvent.Velocity;
-                    notes.Add(midiEvent);
+                    drumNotes.Add(midiEvent);
                 }
             }
 
@@ -256,6 +314,40 @@ public class ButterflyScript : MonoBehaviour
                 }
             }    
         }
+        drumNotes.RemoveAt(drumNotes.Count/2);
+
+        midiFile = new MidiFile("malletMidi.mid");
+
+        // 0 = single-track, 1 = multi-track, 2 = multi-pattern
+        midiFileformat = midiFile.Format;
+
+        // also known as pulses per quarter note
+        ticksPerQuarterNote = midiFile.TicksPerQuarterNote;
+
+        bpm=80;
+
+        malletNotes=new List<MidiEvent>();
+
+        foreach(var track in midiFile.Tracks){
+            UnityEngine.Debug.Log(track);
+            foreach(var midiEvent in track.MidiEvents){
+                if(midiEvent.MidiEventType==MidiEventType.NoteOn){
+                    var channel = midiEvent.Channel;
+                    var note = midiEvent.Note;
+                    var velocity = midiEvent.Velocity;
+                    malletNotes.Add(midiEvent);
+                    UnityEngine.Debug.Log(note);
+                }
+            }
+
+            foreach(var textEvent in track.TextEvents){
+                if(textEvent.TextEventType==TextEventType.Lyric){
+                    var time = textEvent.Time;
+                    var text = textEvent.Value;
+                }
+            }    
+        }
+        malletNotes.RemoveAt(malletNotes.Count/2);
     }
 
     IEnumerator CreateAction(float t, string eventName)
@@ -265,7 +357,7 @@ public class ButterflyScript : MonoBehaviour
     	EventInstance instance = FMODUnity.RuntimeManager.CreateInstance("event:/"+eventName);
         instance.start();
         instance.release(); 
-        
+        UnityEngine.Debug.Log(eventName);
 	}
 
 }

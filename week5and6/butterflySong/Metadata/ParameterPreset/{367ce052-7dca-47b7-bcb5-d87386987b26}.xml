@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{367ce052-7dca-47b7-bcb5-d87386987b26}">
+		<property name="name">
+			<value>Bongo</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d2c4cdf9-545e-42d9-b319-68017fa306b5}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d2c4cdf9-545e-42d9-b319-68017fa306b5}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
