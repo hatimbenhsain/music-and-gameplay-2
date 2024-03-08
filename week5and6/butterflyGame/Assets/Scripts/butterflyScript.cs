@@ -45,7 +45,7 @@ public class ButterflyScript : MonoBehaviour
     public float[] tornadoTresholds={1f,10f,100f,1000f};
 
     public float drumVolumeTreshold=10f;
-    public float malletVolumeTreshold=10f;
+    public float malletVolumeTreshold=50f;
     private float drumMinimumPeriod=0.6f;
 
     private float malletMinimumPeriod=0.6f;
@@ -72,6 +72,9 @@ public class ButterflyScript : MonoBehaviour
     private bool playMelody=false;
     private bool playMallet=false;
     private bool playDrums=false;
+
+    public bool hasEnded=false;
+    private bool prevEnded=false;
 
     void Awake()
     {
@@ -102,6 +105,7 @@ public class ButterflyScript : MonoBehaviour
         prevTreshold=0;
         currentParameter="";
         nextParameter="";
+
     }
 
     // Update is called once per frame
@@ -109,6 +113,12 @@ public class ButterflyScript : MonoBehaviour
     {
         inputManager.HandleAllInputs();
         animator.SetBool("diving",(playerLocomotion.diving && !playerLocomotion.jumping));
+
+        if(playerLocomotion.diving){
+            RuntimeManager.StudioSystem.setParameterByName("diving",1f);
+        }else{
+            RuntimeManager.StudioSystem.setParameterByName("diving",0f);
+        }
 
         float v=Mathf.Abs(tornadoScript.period-tornadoScript.avgPeriod);
         if(v<=tornadoScript.periodTreshold1){
@@ -123,6 +133,14 @@ public class ButterflyScript : MonoBehaviour
         }
         Color tColor=Color.Lerp(dullColor,baseColor,v);
         wingMaterial.color=Color.Lerp(wingMaterial.color,tColor,Time.deltaTime*10f);
+
+        if(hasEnded && !prevEnded){
+            EventInstance chimeInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Chime");
+            chimeInstance.start();
+            chimeInstance.release(); 
+        }
+
+        prevEnded=hasEnded;
     }
 
     private void FixedUpdate() {
@@ -142,6 +160,7 @@ public class ButterflyScript : MonoBehaviour
         wingFlapInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Wingflap");
         wingFlapInstance.start();
         wingFlapInstance.release(); 
+        wingFlapInstance.setParameterByName("FlapReverb",Mathf.Min(tornadoScript.currentRadius/1000f,1f));
         int maxFlap=2; //number of flaps before next chord play
 
         if(tornadoScript.period>2f && flapCount%maxFlap==1 && tornadoScript.currentRadius>tornadoTresholds[0]){
@@ -154,9 +173,11 @@ public class ButterflyScript : MonoBehaviour
                 firstChord=true;
             }
             prevChord=currentChord;
-            prevChord.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentChord=FMODUnity.RuntimeManager.CreateInstance("event:/"+chords[(int)Mathf.Floor(flapCount/maxFlap)%chords.Length]);
-            currentChord.start();
+            if(!hasEnded){
+                prevChord.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                currentChord.start();
+            }
             foreach(string[] s in instrumentParameters){
                 if(s.Length>0){
                     foreach(string p in s){
@@ -472,7 +493,9 @@ public class ButterflyScript : MonoBehaviour
 		yield return new WaitForSeconds(t);
 
     	EventInstance instance = FMODUnity.RuntimeManager.CreateInstance("event:/"+eventName);
-        instance.start();
+        if(!hasEnded){
+            instance.start();
+        }
         instance.release(); 
         UnityEngine.Debug.Log(eventName);
 	}

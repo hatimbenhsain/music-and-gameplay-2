@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{bb2f5e8b-e736-455a-a43d-bfcf2e85ae79}">
+		<property name="name">
+			<value>FlapReverb</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37d1c812-4d36-416d-9f0c-bec7558ceb87}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{591ee0ab-c055-4e90-97f7-1871c490818f}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{591ee0ab-c055-4e90-97f7-1871c490818f}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

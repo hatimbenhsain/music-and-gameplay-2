@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     private float pixelationFactor;
     private String[] butterflyTerms;
 
+    private ButterflyScript butterflyScript;
+
     private float timer2;
     void Start()
     {
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour
         "ALLELE","MONARCH","COLONIST","CREPUSCULAR","DIMORPHISM","DORSAL","EXTINCT","HIBERNATION","LEPIDOPTERA",
         "WEEDY","STIGMA","MIMICRY"};
         timer2=0f;
+
+        butterflyScript=FindObjectOfType<ButterflyScript>();
     }
 
     // Update is called once per frame
@@ -103,6 +107,7 @@ public class GameManager : MonoBehaviour
                 if(timer2<1f){
                     bigRatingText.text=butterflyTerms[(int)Mathf.Ceil(UnityEngine.Random.Range(0f,(float)butterflyTerms.Length-1))];
                 }
+                butterflyScript.hasEnded=true;
             }else{
                 UIScoreText.text=scoreString;
                 
