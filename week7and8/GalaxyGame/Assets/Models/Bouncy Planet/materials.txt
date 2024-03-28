@@ -1,0 +1,31 @@
+lambert2_v
+==========
+  Textures:
+    - IP2_glow1_i
+    - RailBlockBig_Stone
+        Scale: 0.05000000074505806, 0.05000000074505806
+    - IP2V_sanenv1
+    - Ball
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 255
+    - 223, 255, 140, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 64, 161, 8, 190
+    - 137, 194, 145, 262
+
+  Steps:
+    1: RGB = (lerp from (64, 161, 8) to (137, 194, 145) using (tex #1 RGB)), then add (vertex RGB), subtract 127
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), subtract 127
+         A = (vertex A)
+    3: RGB = (lerp from (223, 255, 140) to (prev. RGB) using (tex #4 RGB))
+         A = 0

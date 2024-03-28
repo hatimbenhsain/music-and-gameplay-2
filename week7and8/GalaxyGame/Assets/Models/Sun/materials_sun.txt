@@ -1,0 +1,41 @@
+_mat1
+=====
+  Textures:
+    - P_sun_core1d
+        Center: 0, 0
+        Scale: 2, 2
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 255, 228, 200, 255
+
+  Color Registers:
+    - 246, 141, 125, 255
+
+
+
+_mat24
+======
+  Textures:
+    - P_sun_spreadline5
+        Scale: 1.100000023841858, 1.100000023841858
+        Rotation: 0.05597094637897885
+    - P_sun_spreadline5
+        Scale: 1.2999999523162842, 1.2999999523162842
+        Rotation: -0.05603198339793085
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 24, 146, 255, 255
+    - 246, 131, 33, 255
+
+  Material Colors:
+    - 178, 178, 178, 30
+    - 178, 178, 178, 30
+
+  Color Registers:
+    - 218, 214, 206, 255
