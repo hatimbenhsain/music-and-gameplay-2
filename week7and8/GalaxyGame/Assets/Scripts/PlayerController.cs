@@ -39,6 +39,15 @@ public class PlayerController : MonoBehaviour
 
     private FauxGravityBody fauxGravityBody;
 
+    
+    private int homeNote=54;
+    private int prevNote;
+    private int noteRange=12;
+
+    private float ogOSCVol;
+    private float ogSubVol;
+    private float ogNoiseVol;
+
     void Start()
     {
         body=GetComponent<Rigidbody>();
@@ -46,12 +55,21 @@ public class PlayerController : MonoBehaviour
         camera=Camera.main.gameObject;
         fauxGravityBody=GetComponent<FauxGravityBody>();
 
+        ogOSCVol=helmController.GetParameterValue(AudioHelm.Param.kOsc2Volume);
+        ogSubVol=helmController.GetParameterValue(AudioHelm.Param.kSubVolume);
+        ogNoiseVol=helmController.GetParameterValue(AudioHelm.Param.kNoiseVolume);
+
+        ogOSCVol=0.5f;
+        ogNoiseVol=0.2f;
+
+        prevNote=homeNote;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!playedNote){
+        if(!playedNote & Time.time>1f){
             helmController.NoteOn(note,1f);
             playedNote=true;
         }
@@ -119,7 +137,25 @@ public class PlayerController : MonoBehaviour
 
         float dis=Vector3.Distance(transform.position,fauxGravityBody.attractor.transform.position);
         float vol=Mathf.Clamp(1-(dis-initHeight)/(maxHeight-initHeight),0f,1f);
-        helmController.SetParameterPercent(AudioHelm.Param.kVolume,vol);
+        //helmController.SetParameterPercent(AudioHelm.Param.kVolume,vol);
+        helmController.SetParameterPercent(AudioHelm.Param.kOsc2Volume,ogOSCVol*vol);
+        helmController.SetParameterPercent(AudioHelm.Param.kSubVolume,ogSubVol*vol);
+        helmController.SetParameterPercent(AudioHelm.Param.kNoiseVolume,ogNoiseVol+(1-vol)*(1-ogNoiseVol));
+
+        float yAngle=Vector3.Angle(Vector3.up,transform.position-fauxGravityBody.attractor.transform.position);
+        // Debug.Log(yAngle);
+        // int n=Mathf.RoundToInt(yAngle*(noteRange)/180);
+        // n=homeNote+n;
+        // if(n!=note){
+        //     helmController.NoteOff(note);
+        //     helmController.NoteOn(n,1f);
+        //     note=n;
+        // }
+        helmController.SetParameterPercent(AudioHelm.Param.kOsc2Tune,yAngle/180);
+        helmController.SetParameterPercent(AudioHelm.Param.kOsc1Tune,yAngle/180);
+        helmController.SetParameterPercent(AudioHelm.Param.kOscFeedbackTranspose,yAngle/180);
+
+        float xAngle; //calculate this and associate it to osc1 volume
     }
 
     void FixedUpdate() {

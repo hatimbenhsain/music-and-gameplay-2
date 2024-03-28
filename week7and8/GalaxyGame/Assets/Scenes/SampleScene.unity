@@ -567,7 +567,7 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!83 &1111833514
+--- !u!83 &1049271159
 AudioClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -752,11 +752,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channel: 0
-  synthParamValue0: 0
-  synthParamValue1: 0
-  synthParamValue2: 0
-  synthParamValue3: 0
-  synthParamValue4: 0
+  synthParamValue0: 1
+  synthParamValue1: 0.5
+  synthParamValue2: 0.5
+  synthParamValue3: 1
+  synthParamValue4: 0.45
   synthParamValue5: 0
   synthParamValue6: 0
   synthParamValue7: 0
@@ -774,7 +774,19 @@ MonoBehaviour:
     parent: {fileID: 2031155697}
     minimumRange: 0
     maximumRange: 1.4143
-    paramValue_: 0
+    paramValue_: 1
+  - parameter_: 61
+    scaleType: 1
+    parent: {fileID: 2031155697}
+    minimumRange: -1
+    maximumRange: 1
+    paramValue_: 0.5
+  - parameter_: 73
+    scaleType: 1
+    parent: {fileID: 2031155697}
+    minimumRange: -24
+    maximumRange: 24
+    paramValue_: 0.5
 --- !u!114 &2031155698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +813,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: df36abcc2d535994eb8fb4475328445a, type: 2}
-  m_audioClip: {fileID: 1111833514}
+  m_audioClip: {fileID: 1049271159}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1145,7 +1157,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969042644948841031}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b076218f9c003d54a978cfe0b8cc00bd, type: 3}
   m_Name: 
