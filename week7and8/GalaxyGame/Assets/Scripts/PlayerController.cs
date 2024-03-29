@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     private float ogSubVol;
     private float ogNoiseVol;
 
+    private bool reachedPeak=false;
+
     void Start()
     {
         body=GetComponent<Rigidbody>();
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         ogOSCVol=0.5f;
         ogNoiseVol=0.2f;
+        ogSubVol=0.2f;
 
         prevNote=homeNote;
 
@@ -106,8 +109,15 @@ public class PlayerController : MonoBehaviour
         moveVector=Vector3.ClampMagnitude(moveVector,ms);
 
         if(Input.GetKeyDown(KeyCode.Space) && grounded){
-            body.AddForce(transform.up*jumpForce);
+            body.velocity=transform.up*jumpForce;
             Debug.Log("jump");
+        }
+
+        if(Input.GetKey(KeyCode.Space) && transform.InverseTransformDirection(body.velocity).y>0){
+            Debug.Log("pressing space while going up");
+            fauxGravityBody.halveGravity=true;
+        }else{
+            fauxGravityBody.halveGravity=false;
         }
 
         // if(moveDir.magnitude==0f || moveSpeed>moveDir.magnitude*maxSpeed){
@@ -135,12 +145,22 @@ public class PlayerController : MonoBehaviour
             camera.transform.localPosition=Vector3.Lerp(camera.transform.localPosition,cameraFarTransform.transform.localPosition,cameraLerp*Time.deltaTime);
         }
 
+
+
         float dis=Vector3.Distance(transform.position,fauxGravityBody.attractor.transform.position);
         float vol=Mathf.Clamp(1-(dis-initHeight)/(maxHeight-initHeight),0f,1f);
         //helmController.SetParameterPercent(AudioHelm.Param.kVolume,vol);
         helmController.SetParameterPercent(AudioHelm.Param.kOsc2Volume,ogOSCVol*vol);
         helmController.SetParameterPercent(AudioHelm.Param.kSubVolume,ogSubVol*vol);
         helmController.SetParameterPercent(AudioHelm.Param.kNoiseVolume,ogNoiseVol+(1-vol)*(1-ogNoiseVol));
+
+        if(!reachedPeak && dis>=maxHeight){
+            reachedPeak=true;
+            Debug.Log("reached peak");
+            helmController.NoteOff(note);
+            note=48+Mathf.FloorToInt(Random.Range(0f,12f));
+            helmController.NoteOn(note);
+        }
 
         float yAngle=Vector3.Angle(Vector3.up,transform.position-fauxGravityBody.attractor.transform.position);
         // Debug.Log(yAngle);
@@ -155,7 +175,20 @@ public class PlayerController : MonoBehaviour
         helmController.SetParameterPercent(AudioHelm.Param.kOsc1Tune,yAngle/180);
         helmController.SetParameterPercent(AudioHelm.Param.kOscFeedbackTranspose,yAngle/180);
 
-        float xAngle; //calculate this and associate it to osc1 volume
+        float xAngle=Vector3.Angle(Vector3.forward,transform.position-fauxGravityBody.attractor.transform.position); //calculate this and associate it to osc1 volume
+        helmController.SetParameterPercent(AudioHelm.Param.kOsc1Volume,xAngle*0.5f/180f);
+        // float v=helmController.GetParameterValue(AudioHelm.Param.kOsc2Volume);
+        // v=(1-xAngle/180f)*v;
+        // helmController.SetParameterPercent(AudioHelm.Param.kOsc2Volume,ogOSCVol*v);
+
+//        helmController.SetParameterValue(AudioHelm.Param.kPolyLfoFrequency,xAngle/180f);
+
+        float camVal=(camera.transform.localPosition-cameraFarTransform.transform.localPosition).magnitude/
+        (cameraCloseTransform.transform.localPosition-cameraFarTransform.transform.localPosition).magnitude;
+
+        helmController.SetParameterPercent(AudioHelm.Param.kSubVolume,vol*(ogSubVol+camVal*(0.6f-ogSubVol)));
+        helmController.SetParameterPercent(AudioHelm.Param.kOsc2Volume,vol*(ogOSCVol-camVal*(ogOSCVol)));
+        
     }
 
     void FixedUpdate() {
@@ -166,6 +199,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag=="Planet"){
             grounded=true;
         }
+        reachedPeak=false;
     }
 
     private void OnCollisionExit(Collision other) {
