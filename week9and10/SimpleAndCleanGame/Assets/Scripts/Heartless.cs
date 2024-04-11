@@ -10,24 +10,36 @@ public class Heartless : MonoBehaviour
     public float rotationSpeed=1f;
 
     public float stunTime;
-    private float stunDuration;
+    public float stunDuration=5f;
     private float halfStunDuration;
+
+    public float minForce=1f;
+
+    public float maxSpeed=1f;
     void Start()
     {
         rb=GetComponent<Rigidbody>();
-        stunDuration=5f;
+        halfStunDuration=stunDuration/2f;
         stunTime=5f;
+        target=GameObject.Find("PlayerCapsule").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(stunTime>halfStunDuration);
-        transform.LookAt(target.position);
+        if(stunTime<stunDuration && stunTime>=halfStunDuration){
+            Quaternion ogRotation=transform.rotation;
+            transform.LookAt(target.position);
+            float k=(stunTime-halfStunDuration)/(stunDuration-halfStunDuration);
+            transform.rotation=Quaternion.Lerp(ogRotation,transform.rotation,k);
+        }else if(stunTime>halfStunDuration){
+            transform.LookAt(target.position);
+        }
         stunTime+=Time.deltaTime;
     }
 
     void FixedUpdate(){
+        halfStunDuration=stunDuration/2f;
         Vector3 positionDifference=target.position-transform.position;
         float time=positionDifference.magnitude/moveSpeed;
         //rb.velocity=positionDifference/Mathf.Max(time,Time.fixedDeltaTime);
@@ -37,14 +49,23 @@ public class Heartless : MonoBehaviour
         }else if(stunTime<halfStunDuration){
             k=(stunTime-halfStunDuration)/(stunDuration-halfStunDuration);
         }
+        float d1=Vector3.Distance(target.position,transform.position);
+        float d2=Vector3.Distance(target.position,transform.position+rb.velocity*Time.deltaTime);
+        Debug.Log(rb.velocity.magnitude);
+        if(d2<d1){
+            if(rb.velocity.magnitude>maxSpeed){
+                positionDifference=Vector3.zero;
+                Debug.Log("stop accelerating");
+            }
+        }
+
         rb.AddForce(positionDifference*moveSpeed*Time.deltaTime*k,ForceMode.Impulse);
     }
 
-    private void OnCollisionEnter(Collision other) {
-        Debug.Log(other.gameObject.tag);
+    void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag=="Sword" && stunTime>halfStunDuration){
-            stunTime=0f;
-            Debug.Log("sword");
+            float force=other.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            if(force>=minForce) stunTime=0f;
         }
     }
 }
