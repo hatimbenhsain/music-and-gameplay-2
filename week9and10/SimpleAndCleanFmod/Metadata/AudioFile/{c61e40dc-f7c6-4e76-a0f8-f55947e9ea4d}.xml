@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c61e40dc-f7c6-4e76-a0f8-f55947e9ea4d}">
+		<property name="assetPath">
+			<value>simpleAndCleanHihats.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>21.776984126984129</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8e748bc9-e91e-4c5d-bd8d-789475ac4b9e}</destination>
+		</relationship>
+	</object>
+</objects>

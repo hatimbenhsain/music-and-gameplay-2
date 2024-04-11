@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{41aec3aa-aff1-49ec-bd41-93cd143a8d31}">
+		<property name="name">
+			<value>hihats</value>
+		</property>
+		<relationship name="folder">
+			<destination>{01c277c5-b245-471a-a687-03f3c6914782}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{36509bd9-9cae-482e-9cd6-ebd0d36b352c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{36509bd9-9cae-482e-9cd6-ebd0d36b352c}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.94999998807907104</value>
+		</property>
+	</object>
+</objects>
