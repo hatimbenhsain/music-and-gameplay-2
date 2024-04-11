@@ -1,0 +1,96 @@
+gaeasu_v
+========
+  Textures:
+    - GlaSphereRefLight2
+        Scale: 0.29296875, 0.29296875
+    - rocken03
+        Scale: 4.04296875, 4.04296875
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 242, 230, 164, 150
+    - 210, 89, 214, 121
+
+  Material Colors:
+    - 255, 214, 135, 255
+    - 255, 214, 135, 255
+
+  Color Registers:
+    - 238, 238, 238, 0
+    - 0, 0, 24, 0
+
+  Steps:
+    1: RGB = (lerp from (vertex RGB) to (0, 0, 0) using (0, 0, 24))
+         A = ((vertex A) * (tex #1 A))
+
+
+
+sabi_v
+======
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 25, 62, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+    - 255, 256, 255, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+tethu_v
+=======
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 6, 6
+    - ori_Mask01
+        Scale: 6, 6
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)

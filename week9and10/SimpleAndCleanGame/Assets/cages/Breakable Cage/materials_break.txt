@@ -1,0 +1,813 @@
+sabi_v
+======
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+tethu_v
+=======
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+tethu_v(2)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+sabi_v(2)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+tethu_v(3)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+sabi_v(3)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(4)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(5)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(6)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(7)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(8)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(9)
+=========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(10)
+==========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(11)
+==========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+sabi_v(12)
+==========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+tethu_v(4)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+tethu_v(5)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+tethu_v(6)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+tethu_v(7)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+tethu_v(8)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+sabi_v(13)
+==========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+tethu_v(9)
+==========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
+
+
+
+sabi_v(14)
+==========
+  Textures:
+    - top01
+    - ori_Mask01
+        Offset: 0, 0.6201171875
+        Scale: 2.890625, 2.890625
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Scale: 1.03515625, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB)
+         A = (vertex A)
+
+
+
+tethu_v(10)
+===========
+  Textures:
+    - ori_kuro01
+        Offset: 0.6591796875, 0
+        Scale: 0.5, 0.5
+    - ori_Mask01
+        Scale: 0.5, 0.5
+    - IP2V_hebienv2
+        Offset: 1.07421875, 0.205078125
+        Center: 2.2705078125, 1.03515625
+        Rotation: 0.01217688528092288
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 87, 94, 96, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), multiply by 2
+         A = (vertex A)
