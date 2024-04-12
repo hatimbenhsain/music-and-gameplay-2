@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{2302504f-5c32-43a8-a300-b67843dcdfe5}">
+		<property name="name">
+			<value>finalShift</value>
+		</property>
+		<relationship name="folder">
+			<destination>{01c277c5-b245-471a-a687-03f3c6914782}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e70ca23a-0c87-4e2b-a25f-ac9759914212}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e70ca23a-0c87-4e2b-a25f-ac9759914212}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.029999999329447746</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Sword
+  - TriggerSphere
   layers:
   - Default
   - TransparentFX

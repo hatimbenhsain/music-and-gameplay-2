@@ -211,6 +211,7 @@ MonoBehaviour:
   stunDuration: 5
   minForce: 1
   maxSpeed: 2
+  starsPrefab: {fileID: 5160078749888239722, guid: ea0efb15bb29c5a4f985ace18a633226, type: 3}
 --- !u!1 &9091387949562574600
 GameObject:
   m_ObjectHideFlags: 0

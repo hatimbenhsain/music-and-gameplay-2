@@ -249,12 +249,19 @@ namespace StarterAssets
 				_input.jump = false;
 			}
 
-		if(Input.GetKey(KeyCode.Q) && _verticalVelocity>-_terminalVelocity){
-			_verticalVelocity-=moveUpSpeed*Time.deltaTime;
-		}
-		if(Input.GetKey(KeyCode.E) && _verticalVelocity<_terminalVelocity){
-			_verticalVelocity+=moveDownSpeed*Time.deltaTime;
-		}
+			if(Input.GetKey(KeyCode.Q) && _verticalVelocity>-_terminalVelocity){
+				_verticalVelocity-=moveUpSpeed*Time.deltaTime;
+			}
+			if(Input.GetKey(KeyCode.E) && _verticalVelocity<_terminalVelocity){
+				_verticalVelocity+=moveDownSpeed*Time.deltaTime;
+			}
+
+			if(!Input.GetKey(KeyCode.Q) && _verticalVelocity<-1){
+				_verticalVelocity+=moveUpSpeed*Time.deltaTime/2;
+			}
+			if(!Input.GetKey(KeyCode.E) && _verticalVelocity>1){
+				_verticalVelocity-=moveDownSpeed*Time.deltaTime/2;
+			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 			if (_verticalVelocity < _terminalVelocity)

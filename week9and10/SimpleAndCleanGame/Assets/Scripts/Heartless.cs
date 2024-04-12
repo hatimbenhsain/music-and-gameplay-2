@@ -16,6 +16,8 @@ public class Heartless : MonoBehaviour
     public float minForce=1f;
 
     public float maxSpeed=1f;
+
+    public GameObject starsPrefab;
     void Start()
     {
         rb=GetComponent<Rigidbody>();
@@ -63,8 +65,17 @@ public class Heartless : MonoBehaviour
     void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag=="Sword" && stunTime>halfStunDuration){
             float force=other.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-            if(force>=minForce) stunTime=0f;
+            if(force>=minForce){
+                stunTime=0f;
+                Instantiate(starsPrefab,other.contacts[0].point,Quaternion.Euler(0,0,0));
+            }
             FindObjectOfType<Music>().PlayStinger();
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if(other.gameObject.tag=="TriggerSphere"){
+            Destroy(gameObject);
         }
     }
 }
