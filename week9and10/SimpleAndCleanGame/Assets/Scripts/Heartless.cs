@@ -51,11 +51,9 @@ public class Heartless : MonoBehaviour
         }
         float d1=Vector3.Distance(target.position,transform.position);
         float d2=Vector3.Distance(target.position,transform.position+rb.velocity*Time.deltaTime);
-        Debug.Log(rb.velocity.magnitude);
         if(d2<d1){
             if(rb.velocity.magnitude>maxSpeed){
                 positionDifference=Vector3.zero;
-                Debug.Log("stop accelerating");
             }
         }
 
@@ -66,6 +64,7 @@ public class Heartless : MonoBehaviour
         if(other.gameObject.tag=="Sword" && stunTime>halfStunDuration){
             float force=other.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             if(force>=minForce) stunTime=0f;
+            FindObjectOfType<Music>().PlayStinger();
         }
     }
 }

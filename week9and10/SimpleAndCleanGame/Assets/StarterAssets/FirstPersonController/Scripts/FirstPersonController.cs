@@ -58,7 +58,7 @@ namespace StarterAssets
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private float _terminalVelocity = 53.0f;
+		public float _terminalVelocity = 53.0f;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -73,6 +73,12 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
+
+		public float moveUpSpeed=1f;
+		public float moveDownSpeed=1f;
+
+		private float minY=0f;
+		private float maxY=0f;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -115,6 +121,10 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			minY=Mathf.Min(minY,transform.position.y);
+			maxY=Mathf.Max(maxY,transform.position.y);
+
 		}
 
 		private void LateUpdate()
@@ -206,7 +216,7 @@ namespace StarterAssets
 				_fallTimeoutDelta = FallTimeout;
 
 				// stop our velocity dropping infinitely when grounded
-				if (_verticalVelocity < 0.0f)
+				if (_verticalVelocity < 0.0f && !Input.GetKey(KeyCode.E))
 				{
 					_verticalVelocity = -2f;
 				}
@@ -238,6 +248,13 @@ namespace StarterAssets
 				// if we are not grounded, do not jump
 				_input.jump = false;
 			}
+
+		if(Input.GetKey(KeyCode.Q) && _verticalVelocity>-_terminalVelocity){
+			_verticalVelocity-=moveUpSpeed*Time.deltaTime;
+		}
+		if(Input.GetKey(KeyCode.E) && _verticalVelocity<_terminalVelocity){
+			_verticalVelocity+=moveDownSpeed*Time.deltaTime;
+		}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 			if (_verticalVelocity < _terminalVelocity)

@@ -31,12 +31,18 @@ public class Sword : MonoBehaviour
     private void Update() {
         if(rb.velocity.magnitude>minVelocity){
             lowVelocityTimer=0f;
-            FindObjectOfType<StudioEventEmitter>().SetParameter("voice",1f);
+            RuntimeManager.StudioSystem.setParameterByName("voice",1f);
         }else{
             lowVelocityTimer+=Time.deltaTime;
             if(lowVelocityTimer>=lowVelocityDuration && lowVelocityTimer-Time.deltaTime<lowVelocityDuration){
-                FindObjectOfType<StudioEventEmitter>().SetParameter("voice",0f);
+                RuntimeManager.StudioSystem.setParameterByName("voice",0f);
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            transform.position=targetTransform.position;
+            transform.rotation=targetTransform.rotation;
+            rb.velocity=Vector3.zero;
         }
     }
 
