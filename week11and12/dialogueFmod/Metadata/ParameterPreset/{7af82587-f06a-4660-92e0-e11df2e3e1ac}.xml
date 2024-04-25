@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{7af82587-f06a-4660-92e0-e11df2e3e1ac}">
+		<property name="name">
+			<value>bassDrum6</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a9ccdfa5-5538-4e78-833a-aedfc83f2ced}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9b32aef2-7755-4568-bc02-a7805d368230}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9b32aef2-7755-4568-bc02-a7805d368230}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

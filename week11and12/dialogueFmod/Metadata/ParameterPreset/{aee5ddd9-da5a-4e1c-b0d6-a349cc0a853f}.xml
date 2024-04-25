@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{aee5ddd9-da5a-4e1c-b0d6-a349cc0a853f}">
+		<property name="name">
+			<value>hiConga</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a9ccdfa5-5538-4e78-833a-aedfc83f2ced}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{941f7882-442a-4321-88a6-c75329b7b7d8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{941f7882-442a-4321-88a6-c75329b7b7d8}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{8ba0facc-0e70-4a59-a478-a99db5900d8a}">
+		<property name="name">
+			<value>lowConga</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a9ccdfa5-5538-4e78-833a-aedfc83f2ced}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8f54affa-7637-49ad-acdb-37ff14d03ce2}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8f54affa-7637-49ad-acdb-37ff14d03ce2}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

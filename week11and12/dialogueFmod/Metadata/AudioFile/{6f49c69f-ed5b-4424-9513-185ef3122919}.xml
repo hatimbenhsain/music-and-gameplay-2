@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6f49c69f-ed5b-4424-9513-185ef3122919}">
+		<property name="assetPath">
+			<value>padLine-12.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.982902494331066</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{989e52f2-16a1-4348-a908-b5f534543670}</destination>
+		</relationship>
+	</object>
+</objects>

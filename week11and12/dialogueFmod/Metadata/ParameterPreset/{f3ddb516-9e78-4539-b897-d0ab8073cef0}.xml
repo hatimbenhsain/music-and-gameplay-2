@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{f3ddb516-9e78-4539-b897-d0ab8073cef0}">
+		<property name="name">
+			<value>zap</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a9ccdfa5-5538-4e78-833a-aedfc83f2ced}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{0db43318-2aa8-4f15-b65d-a7c1834af624}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{0db43318-2aa8-4f15-b65d-a7c1834af624}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

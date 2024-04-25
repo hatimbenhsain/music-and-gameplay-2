@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{209c6787-4e16-4070-b095-52641653ac81}">
+		<property name="name">
+			<value>openHihat</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a9ccdfa5-5538-4e78-833a-aedfc83f2ced}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{bf2320d9-f0cb-449c-8cf1-ae6b8896347e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{bf2320d9-f0cb-449c-8cf1-ae6b8896347e}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

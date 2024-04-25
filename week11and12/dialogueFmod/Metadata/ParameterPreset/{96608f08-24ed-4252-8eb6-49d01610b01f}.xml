@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{96608f08-24ed-4252-8eb6-49d01610b01f}">
+		<property name="name">
+			<value>clap</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a9ccdfa5-5538-4e78-833a-aedfc83f2ced}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9f4eaf7c-65d0-4e15-95ae-0e23146385d7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9f4eaf7c-65d0-4e15-95ae-0e23146385d7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
