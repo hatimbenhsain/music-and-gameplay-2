@@ -461,140 +461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
---- !u!1 &1150006763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1150006764}
-  - component: {fileID: 1150006766}
-  - component: {fileID: 1150006765}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1150006764
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150006763}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1744195259}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -910, y: -490}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1150006765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150006763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Hello this is my test text
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 999e467d8d497ef48990929074bab487, type: 2}
-  m_sharedMaterial: {fileID: -6275431092833056427, guid: 999e467d8d497ef48990929074bab487, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1150006766
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150006763}
-  m_CullTransparentMesh: 1
 --- !u!1 &1239645440
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +693,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1150006764}
   - {fileID: 1893000086}
   - {fileID: 1776391668}
   - {fileID: 1239645441}
@@ -866,16 +731,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770479270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0016733839, w: 0.9999986}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1908028189}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.192}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2, y: -9.999985}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1770479272
@@ -933,7 +798,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -962,7 +827,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -261.3654, y: -166.98346, z: -302.5061, w: -65.34137}
+  m_margin: {x: -269.34204, y: -167.98065, z: -305.49738, w: -65.34137}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1218,7 +1083,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1359,6 +1224,121 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908028188}
   m_CullTransparentMesh: 1
+--- !u!1 &1934026718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934026720}
+  - component: {fileID: 1934026719}
+  m_Layer: 0
+  m_Name: Writer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1934026719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934026718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423fc6495e1b98c4ba25e4b729b9bece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueWhite:
+  - 
+  - 'Thou-thou whose face is bent to earth-dost thou avow, or disavow, this deed? '
+  - 
+  - 'Now, tell me thou-not in many words, but briefly-knewest thou that an edict
+    had forbidden this? '
+  - 
+  - 'And thou didst indeed dare to transgress that law? '
+  - 'Alors, ecoute: tu vas rentrer chez toi, te coucher, dire que tu es malade, que
+    tu n''es pas sortie depuis hier.'
+  - Ta nourrice dira comme toi. Je ferai disparaitre ces trois hommes.
+  - 
+  - 
+  - 'The maid shows herself passionate child of passionate sire, and knows not how
+    to bend before troubles. '
+  - 
+  - Je l'avais interdit.
+  - 
+  - C'etait un revolte et un traitre, tu le savais.
+  dialogueBrown:
+  - 
+  - 
+  - 'I avow it; I make no denial. '
+  - 
+  - 'I knew it: could I help it? It was public. '
+  - 
+  - Yes; for it was not Zeus that had published me that edict...
+  - 'Not through dread of any human pride could I answer to the gods for breaking
+    these. '
+  - So for me to meet this doom is trifling grief.
+  - 'And if my present deeds are foolish in thy sight, it may be that a foolish judge
+    arraigns my folly. '
+  - 
+  - Je le devais.
+  - Je le devais tout de meme.
+  - "Ceux qu\u2019on n'enterre pas errent eternellement sans jamais trouver de repos."
+  - Il a droit au repos
+  - "C\u2019etait mon frere."
+  whiteTxtBox: {fileID: 1770479272}
+  brownTxtBox: {fileID: 1897946162}
+  whiteImg: {fileID: 416296863}
+  brownImg: {fileID: 1239645442}
+  tempo: 120
+  pitchesW:
+  - 1.5
+  - 1
+  - 2
+  - 0.5
+  - 0.67
+  pitchesB:
+  - 1.1
+  - 1
+  - 1.2
+  - 0.91
+  - 0.83
+  frequencyW: 4
+  frequencyB: 2
+  whiteSprites:
+  - {fileID: 1008206015, guid: 64c20ec536a04e748967be28fb30370b, type: 3}
+  - {fileID: 278096432, guid: 64c20ec536a04e748967be28fb30370b, type: 3}
+  - {fileID: -1018550406, guid: 64c20ec536a04e748967be28fb30370b, type: 3}
+  - {fileID: -1827190975, guid: 64c20ec536a04e748967be28fb30370b, type: 3}
+  - {fileID: 1780852900, guid: 64c20ec536a04e748967be28fb30370b, type: 3}
+  - {fileID: 1373018916, guid: 64c20ec536a04e748967be28fb30370b, type: 3}
+  brownSprites:
+  - {fileID: -1509235712, guid: 1340f06f3e541f445878b59e77ec39a7, type: 3}
+  - {fileID: -71279026, guid: 1340f06f3e541f445878b59e77ec39a7, type: 3}
+  - {fileID: 1437843128, guid: 1340f06f3e541f445878b59e77ec39a7, type: 3}
+  - {fileID: -1587335232, guid: 1340f06f3e541f445878b59e77ec39a7, type: 3}
+  breakLengthShort: 1
+  breakLengthLong: 2
+--- !u!4 &1934026720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934026718}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 971.81744, y: 561.57324, z: -7.385042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1367,3 +1347,4 @@ SceneRoots:
   - {fileID: 1744195259}
   - {fileID: 198309401}
   - {fileID: 1250880828}
+  - {fileID: 1934026720}

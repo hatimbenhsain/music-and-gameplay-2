@@ -10,8 +10,13 @@ public class Music : MonoBehaviour
     private EventInstance currentBgMusic;
 
     private EventInstance drumTrack;
+    private EventInstance pianoTrack;
+    private EventInstance bassTrack;
+    private EventInstance saxTrack;
 
     private string[] drumParameters;
+
+    private string[] jazzParameters;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,19 +27,18 @@ public class Music : MonoBehaviour
         bgMusic[3]=FMODUnity.RuntimeManager.CreateInstance("event:/BGMusic 4");
     
         drumTrack=FMODUnity.RuntimeManager.CreateInstance("event:/DrumLine");
+        pianoTrack=FMODUnity.RuntimeManager.CreateInstance("event:/PianoLine");
+        bassTrack=FMODUnity.RuntimeManager.CreateInstance("event:/BassLine");
+        saxTrack=FMODUnity.RuntimeManager.CreateInstance("event:/SaxLine");
 
         drumParameters=new string[]{"bassDrum", "bassDrum2", "bassDrum6", "clap", "closedHiHat", "hiConga","lowConga","openHihat","openHihat2","snareDrum","snareDrum2","zap"};
+        jazzParameters=new string[]{"1","2","3","4","5","6","7"};
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return)){
-            PlayBgMusic();
-        }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            PlayDrum(drumParameters[Random.Range(0,drumParameters.Length)]);
-        }
+
     }
 
     public void PlayBgMusic(){
@@ -43,7 +47,7 @@ public class Music : MonoBehaviour
         currentBgMusic.start();
     }
 
-    public void PlayDrum(string p1,string p2="",float pitch=0){
+    public void PlayDrum(string p1,float pitch=0,string p2="",string p3="",string p4=""){
         drumTrack.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         drumTrack.setTimelinePosition(0);
         drumTrack.start();
@@ -54,7 +58,45 @@ public class Music : MonoBehaviour
         if(p2!=""){
             drumTrack.setParameterByName(p2,1f);
         }
-        //drumTrack.setPitch(pitch);
+        if(p3!=""){
+            drumTrack.setParameterByName(p3,1f);
+        }
+        if(p4!=""){
+            drumTrack.setParameterByName(p4,1f);
+        }
+        drumTrack.setPitch(pitch);
+    }
+
+    public void PlayJazz(string instrument,string p1,float pitch=0,string p2="",string p3="",string p4=""){
+        EventInstance inst=pianoTrack;
+        switch(instrument){
+            case "piano":
+                inst=pianoTrack;
+                break;
+            case "bass":
+                inst=bassTrack;
+                break;
+            case "sax":
+                inst=saxTrack;
+                break;
+        }
+        inst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        inst.setTimelinePosition(0);
+        inst.start();
+        foreach(string p in jazzParameters){
+            inst.setParameterByName(p,0f);
+        }
+        inst.setParameterByName(p1,1f);
+        if(p2!=""){
+            inst.setParameterByName(p2,1f);
+        }
+        if(p3!=""){
+            inst.setParameterByName(p3,1f);
+        }
+        if(p4!=""){
+            inst.setParameterByName(p4,1f);
+        }
+        inst.setPitch(pitch);
     }
 
 }
